@@ -1,12 +1,12 @@
 name: Create Release
 on:
-  workflow_dispatch:    # 添加这个支持手动触发
+  workflow_dispatch:    # 支持手动触发
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4    # 更新到 v4
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -26,7 +26,7 @@ jobs:
           sha256sum downloader_x86 > x86_checksum.txt
           sha256sum downloader_arm > arm_checksum.txt
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4    # 更新到 v4
         with:
           name: builds
           path: |
